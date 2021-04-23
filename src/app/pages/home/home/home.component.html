@@ -1,0 +1,91 @@
+<div class="container">
+
+    <h1 class="titulo">Gestão de Veículos</h1>
+    <p class="subtitulo">Gerencie sua frota de veículos desde combustível até a manutenção</p>
+
+    <div class="container-busca">
+        <!-- <img class="logo-input" src="../../../assets/img/logo.png" width="40px"> -->
+        <input type="text" class="input-busca" [(ngModel)]="inputSearch" placeholder="Busque pela placa">
+        <button mat-button class="botao-input" (click)="filterSearch()">
+            <i class="material-icons">search</i>
+        </button>
+
+        <button mat-button class="botao-input" (click)="clearFilterSearch()" *ngIf="buscaFiltrada">LIMPAR BUSCA</button>
+
+        <button mat-raised-button color="accent" class="botao-adicionar">Adicionar Veículo</button>
+    </div>
+
+    <div class="container-tabela">
+        <div class="overflow shadow">
+            <table mat-table [dataSource]="dataSource" *ngIf="loadingApi">
+    
+                  <ng-container matColumnDef="placa">
+                        <th mat-header-cell *matHeaderCellDef>Placa</th>
+                        <td mat-cell *matCellDef="let veiculo"> {{ veiculo.plate }} </td>
+                  </ng-container>
+    
+                  <ng-container matColumnDef="modelo">
+                        <th mat-header-cell *matHeaderCellDef>Modelo</th>
+                        <td mat-cell *matCellDef="let veiculo"> {{ veiculo.model }}
+                        </td>
+                  </ng-container>
+    
+                  <ng-container matColumnDef="fabricante">
+                    <th mat-header-cell *matHeaderCellDef>Fabricante</th>
+                    <td mat-cell *matCellDef="let veiculo"> {{ veiculo.manufacturer }}
+                    </td>
+                  </ng-container>
+    
+                  <ng-container matColumnDef="status">
+                        <th mat-header-cell *matHeaderCellDef>Status</th>
+                        <td mat-cell *matCellDef="let veiculo" 
+                        [ngClass]="{'c-tertiary': veiculo.status === false, 'c-success': veiculo.status === true}">
+                              <span *ngIf="veiculo.status">Ativo</span>
+                              <span *ngIf="!veiculo.status">Inativo</span>
+                        </td>
+                  </ng-container>
+    
+                  <ng-container matColumnDef="acao">
+                        <th mat-header-cell *matHeaderCellDef> </th>
+                        <td mat-cell *matCellDef="let veiculo">
+                              <i class="material-icons c-primary detalhar" [routerLink]="['/home/', veiculo.id]">
+                                    create
+                              </i>
+                        </td>
+                  </ng-container>
+    
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                  <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell mt-4 text-center" colspan="4">
+                              <img src="../../../assets/img/logo.png" width="160px" style="margin-top: 30px">
+                              <p class="legenda-erro">Não foram encontrados veículos cadastrados</p>
+                        </td>
+                  </tr>
+            </table>
+
+            <!-- Mensagem de LOADING enquanto está consultando a API -->
+            <div class="container-loading text-center" *ngIf="loadingApi === null">
+                  <i class="material-icons">rotate_right</i>
+                  <p>Consultando veículos no sistema</p>
+            </div>
+
+            <!-- Mensagem de erro caso a API retorne erro -->
+            <div class="container-loading text-center" *ngIf="loadingApi === false">
+                  <i class="material-icons">rotate_right</i>
+                  <p>Ocorreu um erro na consulta da API. Por favor tente novamente</p>
+            </div>
+
+        </div>
+
+        <div class="container-paginas" *ngIf="loadingApi">
+            <span class="pagina" *ngFor="let paginacao of paginasDisponiveis"
+            [ngClass]="{'pagina-ativa': paginacao == page}"
+            (click)="changePage(paginacao)">{{paginacao}}</span>
+        </div>
+        <p class="quantidade" *ngIf="loadingApi">Veículos por página: {{quantity}}</p>
+
+    </div>
+    
+
+</div>

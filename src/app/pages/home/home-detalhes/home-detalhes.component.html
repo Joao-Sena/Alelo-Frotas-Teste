@@ -1,0 +1,53 @@
+<div class="container">
+
+    
+    <div class="card shadow">
+        <div class="container-titulo">
+            <h1 class="titulo">Detalhes do veículo 
+                <i class="botao-voltar material-icons" (click)="goBackPage()">arrow_back</i>
+            </h1>
+            <p class="subtitulo">Consulte os detalhes disponíveis do veículo</p>
+        </div>
+
+        <img src="../../../../assets/img/bus-2.png" class="onibus-mobile">
+
+        <div class="d-flex" *ngIf="carDetail">
+            <form class="container-form">
+                <label>Placa (desabilitado)</label>
+                <input class="input-form" type="text" placeholder="Placa do veículo" [value]="carDetail.plate" disabled>
+    
+                <label>Modelo</label>
+                <input class="input-form" type="text" placeholder="Modelo do veículo" [value]="carDetail.model">
+    
+                <label>Fabricante</label>
+                <input class="input-form" type="text" placeholder="Fabricante do veículo" [value]="carDetail.manufacturer">
+    
+                <label>Cor</label>
+                <input class="input-form" type="text" placeholder="Cor do veículo" [value]="carDetail.color">
+    
+                <label>Status</label>
+                <div class="d-flex">
+                    <input type="radio" id="ativo" name="status" value="true" [checked]="carDetail.status === true">
+                    <label for="ativo">Ativo </label>
+                    <input type="radio" id="inativo" name="status" value="false" [checked]="carDetail.status === false">
+                    <label for="inativo"> Inativo</label>
+                </div>
+    
+            </form>
+            <img src="../../../../assets/img/bus-2.png" class="onibus">
+    
+        </div>
+
+        <div *ngIf="carDetail === false">
+            <p>Erro ao consultar detalhes do veículo. Por favor tente novamente.</p>
+        </div>
+
+        <!-- Mensagem de LOADING enquanto está consultando a API -->
+        <div class="container-loading text-center" *ngIf="carDetail === null">
+            <i class="material-icons">rotate_right</i>
+            <p>Consultando veículos no sistema</p>
+        </div>
+        
+    </div>
+
+</div>

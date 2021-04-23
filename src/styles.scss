@@ -1,1 +1,103 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; width: 100%; margin: 0; padding: 0; background-color: #ECF0F1; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+:root {
+    --primary-color: #0E7F61;
+    --secondary-color: #BDD654;
+    --tertiary-color: #BC2F6C ;
+    --success-color: #3E9B64;
+    --warning-color: #ffb71b;
+    --info-color: #3498db;
+    --danger-color: #DD4959;
+    --light-color: #f3f3f3;
+    --gray-color: #6e6e6e;
+    --black-color: #0a0a0a;
+    --white-color: #fff;
+}
+
+.c-primary{ color: var(--primary-color); }
+.c-tertiary{ color: var(--tertiary-color); }
+.c-success{ color: var(--success-color); }
+.c-danger{ color: var(--danger-color); }
+.c-white{ color: var(--white-color); }
+.text-center{ text-align: center; }
+.bg-main{ background: var(--primary-color); }
+
+.container{
+    max-width: 100%;
+    height: 100%;
+    padding: 40px;
+    background: #ECF0F1;
+}
+
+.titulo{
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--primary-color);
+    margin: 0px 0px 4px 0px;
+}
+
+.subtitulo{
+    font-size: 18px;
+    font-weight: 340;
+    color: var(--gray-color);
+    margin-bottom: 50px;
+}
+
+table {
+    text-align: left;
+    width: 100%;
+    min-width: 600px;
+    border-radius: 4px;
+}
+
+.shadow{ box-shadow: 0px 0px 4px 2px #0a0a0a20; }
+
+.overflow{
+    overflow-x: auto !important;
+    padding: 0px;
+    border-radius: 4px;
+}
+
+i{
+    transition: 0.7s all;
+    &:hover{
+        cursor: pointer;
+        transform: rotateZ(360deg);
+    }
+}
+
+/* Estilização da barra de rolagem (scrollbar) */
+::-webkit-scrollbar {
+    width: 9px;
+    height: 4px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #42c4a1;
+    border-radius: 12px;
+}
+
+.container-loading{
+    padding: 16px;
+    background: #fafafa;
+    box-shadow: 0px 0px 4px 2px #0a0a0a20;
+    i{ 
+        margin-top: 14px;
+        color: var(--primary-color);
+        animation: rodar 1.6s linear infinite;
+    }
+    p{ margin-top: 14px; color: var(--primary-color); font-size: 16px; }
+}
+
+@keyframes rodar{
+    0%{ transform: rotateZ(0deg) scale(2);}
+    100%{ transform: rotateZ(360deg) scale(2);}
+}

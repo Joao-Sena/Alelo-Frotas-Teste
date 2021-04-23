@@ -1,0 +1,69 @@
+.container-busca{
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.input-busca{
+    background: #ECF0F1; color: #414141;
+    min-width: 140px;
+    width: 50%;
+    max-width: 560px;
+    padding: 12px 20px 12px 20px;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    margin: 0 auto;
+    box-shadow:  7px 7px 8px #c9c9c9,
+                 -7px -7px 8px #ffffff;
+    &:hover{ box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
+        inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5); }
+    &:focus{ box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
+        inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5); }
+}
+
+.botao-input{
+    position: relative;
+    z-index: 10;
+    left: -58px;
+    color: var(--primary-color);
+}
+
+.botao-adicionar{
+    position: absolute; right: 28px;
+    box-shadow:  7px 7px 8px #c9c9c9,
+                 -7px -7px 8px #ffffff;
+                 background-color: var(--tertiary-color);
+    color: #fff;
+    opacity: 0.6;
+}
+
+.container-tabela{
+    padding: 10px 4px 40px 4px; 
+}
+
+.container-paginas{
+    display: flex;
+    justify-content: center;
+    background: #fff;
+    padding: 0px 0px 4px 0px;
+}
+
+.pagina{
+    color: #646464;
+    font-size: 16px;
+    padding: 2px 6px;
+    margin: 14px 8px 0px 8px;
+    border-radius: 5px;
+    &:hover{ cursor: pointer; box-shadow: 0px 0px 3px 2px #0a0a0a20; }
+}
+
+.pagina-ativa{ color: var(--primary-color); font-weight: 500; border: 1px solid currentColor; }
+
+.quantidade{
+    background: #fff;
+    color: var(--tertiary-color);
+    font-size: 14px;
+    padding: 0px 20px 14px 0px;
+    margin: 0;
+    text-align: right;
+}
